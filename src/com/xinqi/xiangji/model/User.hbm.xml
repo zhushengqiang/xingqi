@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-30 15:52:24 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xinqi.xiangji.model.User" table="USER">
+        <id name="id" type="int" access="field">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="money" type="float" access="field">
+            <column name="MONEY" />
+        </property>
+        <property name="tel" type="java.lang.String" access="field">
+            <column name="TEL" />
+        </property>
+        <property name="password" type="java.lang.String" access="field">
+            <column name="PASSWORD" />
+        </property>
+        <property name="name" type="java.lang.String" access="field">
+            <column name="NAME" />
+        </property>
+        <property name="sex" type="boolean" access="field">
+            <column name="SEX" />
+        </property>
+        <property name="city" type="java.lang.String" access="field">
+            <column name="CITY" />
+        </property>
+        <property name="job" type="int" access="field">
+            <column name="JOB" />
+        </property>
+        <property name="describe" type="java.lang.String" access="field">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="headPhotoPath" type="java.lang.String" access="field">
+            <column name="HEAD_PHOTOPATH" />
+        </property>
+        <property name="credit" type="float" access="field">
+            <column name="CREDIT" />
+        </property>
+        <property name="totalSale" type="int" access="field">
+            <column name="TOTAL_SALE" />
+        </property>
+        <set name="userPhotos" table="USERPHOTO" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <one-to-many class="com.xinqi.xiangji.model.UserPhoto" />
+        </set>
+        <set name="favoriteSkills" inverse="false" table="FAVORITE" lazy="true" access="field">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <many-to-many class="com.xinqi.xiangji.model.Skill" column="SKILL_ID"/>
+        </set>
+        <set name="mySoldSkills" table="SKILL" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="SALER_ID" />
+            </key>
+            <one-to-many class="com.xinqi.xiangji.model.Skill" />
+        </set>
+        <set name="boughtRecord" table="SUCCESSRECORD" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="BUYER_ID" />
+            </key>
+            <one-to-many class="com.xinqi.xiangji.model.SuccessRecord" />
+        </set>
+        <set name="order" table="ORDER" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="BUYER_ID" />
+            </key>
+            <one-to-many class="com.xinqi.xiangji.model.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

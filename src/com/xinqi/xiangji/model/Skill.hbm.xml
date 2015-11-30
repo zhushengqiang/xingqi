@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-30 15:52:24 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xinqi.xiangji.model.Skill" table="SKILL">
+        <id name="id" type="int" access="field">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="statu" type="int" access="field">
+            <column name="STATU" />
+        </property>
+        <property name="type" type="int" access="field">
+            <column name="TYPE" />
+        </property>
+        <property name="title" type="java.lang.String" access="field">
+            <column name="TITLE" />
+        </property>
+        <property name="decribe" type="java.lang.String" access="field">
+            <column name="DESCRIBTION" />
+        </property>
+        <property name="price" type="float" access="field">
+            <column name="PRICE" />
+        </property>
+        <property name="unit" type="java.lang.String" access="field">
+            <column name="UNIT" />
+        </property>
+        <property name="publishTime" type="java.sql.Date" access="field">
+            <column name="PUBLISHTIME" />
+        </property>
+        <property name="sellAmount" type="int" access="field">
+            <column name="SELLAMOUNT" />
+        </property>
+        <property name="score" type="float" access="field">
+            <column name="SCORE" />
+        </property>
+        <many-to-one name="saler" class="com.xinqi.xiangji.model.User" access="field" fetch="join">
+            <column name="SALER_ID" />
+        </many-to-one>
+        <set name="skillPhotoPaths" table="SKILLPHOTO" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="SKILL_ID" />
+            </key>
+            <one-to-many class="com.xinqi.xiangji.model.SkillPhoto" />
+        </set>
+        <set name="Records" table="SUCCESSRECORD" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="SKILL_ID" />
+            </key>
+            <one-to-many class="com.xinqi.xiangji.model.SuccessRecord" />
+        </set>
+        <set name="favoritUser" table="FAVORITE" inverse="false" lazy="true" access="field">
+            <key>
+                <column name="SKILL_ID" />
+            </key>
+            <many-to-many class="com.xinqi.xiangji.model.User"  column="USER_ID"/>
+        </set>
+    </class>
+</hibernate-mapping>

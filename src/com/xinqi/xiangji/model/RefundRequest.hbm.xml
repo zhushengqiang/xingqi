@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-30 16:50:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xinqi.xiangji.model.RefundRequest" table="REFUNDREQUEST">
+        <id name="id" type="int" access="field">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="time" type="java.sql.Date" access="field">
+            <column name="TIME" />
+        </property>
+        <one-to-one name="order" class="com.xinqi.xiangji.model.Order" access="field"></one-to-one>
+        <property name="describe" type="java.lang.String" access="field">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="type" type="int" access="field">
+            <column name="TYPE" />
+        </property>
+        <list name="refoundRequestPhotos" inverse="false" table="REFUNDREQUESTPHOTO" lazy="true" access="field">
+            <key>
+                <column name="REFUND_REQUEST_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.xinqi.xiangji.model.RefundRequestPhoto" />
+        </list>
+    </class>
+</hibernate-mapping>

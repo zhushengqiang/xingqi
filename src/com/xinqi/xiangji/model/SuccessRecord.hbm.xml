@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-30 15:52:24 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xinqi.xiangji.model.SuccessRecord" table="SUCCESSRECORD">
+        <id name="id" type="int" access="field">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="buyer" class="com.xinqi.xiangji.model.User" access="field" fetch="join">
+            <column name="BUYERID_ID" />
+        </many-to-one>
+        <many-to-one name="saler" class="com.xinqi.xiangji.model.User" access="field" fetch="join">
+            <column name="SALER_ID" />
+        </many-to-one>
+        <property name="date" type="java.sql.Date" access="field">
+            <column name="DATE" />
+        </property>
+        <property name="price" type="float" access="field">
+            <column name="PRICE" />
+        </property>
+        <property name="skillTitle" type="java.lang.String" access="field">
+            <column name="SKILLTITLE" />
+        </property>
+        <many-to-one name="judegment" class="com.xinqi.xiangji.model.Judgement" access="field" fetch="join">
+            <column name="JUDEGMENT_ID" />
+        </many-to-one>
+        <many-to-one name="skill" class="com.xinqi.xiangji.model.Skill" access="field" fetch="join">
+            <column name="SKILL_ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

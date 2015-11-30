@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-30 16:50:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.xinqi.xiangji.model.RefundRequestPhoto" table="REFUNDREQUESTPHOTO">
+        <id name="id" type="int" access="field">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="refundRequest" class="com.xinqi.xiangji.model.RefundRequest" access="field" fetch="join">
+            <column name="REFUND_REQUEST_ID" />
+        </many-to-one>
+        <property name="path" type="java.lang.String" access="field">
+            <column name="PATH" />
+        </property>
+    </class>
+</hibernate-mapping>
